@@ -7,9 +7,9 @@ public class Employee {
 	public double salary;
 
 	/**
-	 * @param id is the Employee id
-	 * @param name is Employee name
-	 * @param salary is Employee salary
+	 * @param id is the Employee'ss id
+	 * @param name is Employee's name
+	 * @param salary is Employee's salary
 	 */
 	public Employee(int id, String name, double salary) {
 		super();
