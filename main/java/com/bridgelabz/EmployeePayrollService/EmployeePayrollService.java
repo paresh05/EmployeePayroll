@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * @author Paresh Praveen
+ * @author PareshPraveen
  * @class member employeePayrollList is used to store the list of employees data
  */
 public class EmployeePayrollService {
