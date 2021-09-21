@@ -9,9 +9,17 @@ import java.util.Scanner;
  * @class member employeePayrollList is used to store the list of employees data
  */
 public class EmployeePayrollService {
+	
+	public enum IOService{CONSOLE_I0, FILE_IO, DB_IO, REST_IO};
 
-	private List<Employee> employeePayrollList = new ArrayList<>();
-
+	private List<Employee>employeePayrollList;
+	
+	public EmployeePayrollService() {
+		
+	}
+	public EmployeePayrollService(List<Employee> employeePayrollList) {
+		this.employeePayrollList = employeePayrollList;
+	}
 	/**
 	 * This function is used to read the input from the console
 	 * @return nothing
@@ -29,17 +37,17 @@ public class EmployeePayrollService {
 	/**
 	 * This function is used to print the employees data to the console
 	 */
-	private void writeEmployee() {
-		System.out.println("\nWriting Employee Payroll Roaster to Console\n"+employeePayrollList);
+	public void writeEmployee(IOService ioService) {
+		if(ioService.equals(IOService.CONSOLE_I0))
+			System.out.println("\nWriting Employee Payroll Roaster to Console\n"+employeePayrollList);
+		else if(ioService.equals(IOService.FILE_IO))
+			new EmployeePayrollFileIOService().writeData(employeePayrollList);
 	}
-
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		EmployeePayrollService employeePayrollService = new EmployeePayrollService();
-		Scanner consoleInput = new Scanner(System.in);
-		employeePayrollService.readEmployeePayrollData(consoleInput);
-		employeePayrollService.writeEmployee();
+	
+	public void printEmployee(IOService ioService) {
+		if(ioService.equals(IOService.CONSOLE_I0))
+			System.out.println("\nWriting Employee Payroll Roaster to Console\n"+employeePayrollList);
+		else if(ioService.equals(IOService.FILE_IO))
+			new EmployeePayrollFileIOService().printData();
 	}
 }
