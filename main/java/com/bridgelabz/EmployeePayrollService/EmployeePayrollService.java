@@ -46,8 +46,13 @@ public class EmployeePayrollService {
 	
 	public void printEmployee(IOService ioService) {
 		if(ioService.equals(IOService.CONSOLE_I0))
-			System.out.println("\nWriting Employee Payroll Roaster to Console\n"+employeePayrollList);
+			System.out.println("\nPrinting Employee Payroll Roaster to Console\n"+employeePayrollList);
 		else if(ioService.equals(IOService.FILE_IO))
 			new EmployeePayrollFileIOService().printData();
 	}
+	
+	public long countEmployee(IOService ioService) {
+		return(new EmployeePayrollFileIOService().countEntries());
+	}
+	
 }
